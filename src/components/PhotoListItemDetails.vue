@@ -45,4 +45,5 @@ export default {
 .comparision-list .photos-list__info div:first-child {
   border-left: 0px solid #ccc;
 }
+.comparision-list .photos-list__info :nth-child(2) { order: 1; }
 </style>
