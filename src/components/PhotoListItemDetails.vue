@@ -35,6 +35,10 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  border-top: 1px solid #ccc;
+}
+.comparision-list .photos-list__info:first-child{
+    border-top: 0px solid #ccc;
 }
 .comparision-list .photos-list__info div {
   border-left: 1px solid #ccc;
