@@ -4,7 +4,7 @@
     <p class="loader" v-if="isDataLoading">Loading...</p>
     <div v-if="!isDataLoading" class="photo-list">
       <PhotoListItem
-        v-for="(photo, index) in photos"
+        v-for="(photo, index) in photosData"
         :key="index"
         :item="photo"
       />
@@ -13,39 +13,24 @@
 </template>
 
 <script>
-import { getPhotos } from "@/services/photo-compare";
-
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "PhotoList",
   components: {
     PhotoListItem: () =>
       import(/* webpackPrefetch: true */ "@/components/PhotoListItem"),
   },
-  data: () => ({
-    photos: null,
-    isDataLoading: true,
-  }),
   created() {
-    this.getPhotos();
+    this.GET_PHOTOS();
+  },
+  computed: {
+    ...mapGetters("photos", {
+      isDataLoading: "getIsDataLoading",
+      photosData: "getPhotos",
+    }),
   },
   methods: {
-    async getPhotos() {
-      this.isRefresh = true;
-      try {
-        const { data } = await getPhotos();
-        if (data !== undefined) {
-          setTimeout(() => {
-            this.isDataLoading = false;
-          }, 500);
-          this.photos = data.slice(0, 500).map((item) => {
-            item.isCompare = false;
-            return item;
-          });
-        }
-      } catch (err) {
-        console.log("Something went wrong");
-      }
-    },
+    ...mapActions("photos", ["GET_PHOTOS"]),
   },
 };
 </script>
