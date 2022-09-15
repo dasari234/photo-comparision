@@ -8,10 +8,10 @@ export default {
     isDataLoading: true,
   },
   actions: {
-    addComparePhoto: ({ commit }, photo) => {
+    ADD_PHOTO: ({ commit }, photo) => {
       commit("ADD_COMPARE_PHOTO", photo);
     },
-    removeComparePhoto: ({ commit }, photo) => {
+    REMOVE_PHOTO: ({ commit }, photo) => {
       commit("REMOVE_COMPARE_PHOTO", photo);
     },
     async GET_PHOTOS({ commit }) {

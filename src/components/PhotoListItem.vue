@@ -20,14 +20,14 @@ export default {
   data: () => ({}),
   created() {},
   methods: {
-    ...mapActions("photos", ["addComparePhoto", "removeComparePhoto"]),
+    ...mapActions("photos", ["ADD_PHOTO", "REMOVE_PHOTO"]),
     addPhoto(item) {
       item.isCompare = true;
-      this.addComparePhoto(item);
+      this.ADD_PHOTO(item);
     },
     removePhoto(item) {
       item.isCompare = false;
-      this.removeComparePhoto(item);
+      this.REMOVE_PHOTO(item);
     },
   },
 };
