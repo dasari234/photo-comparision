@@ -9,6 +9,7 @@
         :item="photo"
       />
     </div>
+    < !-- ->
   </div>
 </template>
 
